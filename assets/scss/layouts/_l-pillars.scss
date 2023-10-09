@@ -1,0 +1,33 @@
+$layout-name: 'l-pillars';
+
+.#{$layout-name} {
+    background-image: url(../images/pillars-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__title {
+        font-size: 2rem;
+
+        @media screen and (min-width: 1600px) {
+            font-size: 3.125rem;
+        }
+
+        &--highlight {
+            font-size: 2.5rem;
+
+            @media screen and (min-width: 1600px) {
+                font-size: 4.125rem;
+            }
+        }
+    }
+
+    &__item {
+        &__title {
+            font-size: 1.125rem;
+
+            @media screen and (min-width: 1600px) {
+                font-size: 1.375rem;
+            }
+        }
+    }
+}

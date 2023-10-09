@@ -1,0 +1,9 @@
+$layout-name: 'l-new-home-about';
+
+.#{$layout-name} {
+    &__text {
+        @media screen and (min-width: 1600px) {
+            font-size: 1.5rem;
+        }
+    }
+}

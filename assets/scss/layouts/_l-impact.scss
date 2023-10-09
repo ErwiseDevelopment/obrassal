@@ -1,0 +1,60 @@
+$layout-name: 'l-impact';
+
+.#{$layout-name} {
+    &__date {
+        font-size: 1.375rem;
+    }
+    
+    &__items {
+        &__number {
+            font-size: 3.75rem;
+        }
+
+        &__description {
+            font-size: 1.4375rem;
+        }
+    }
+
+    &__text-help {
+        font-size: 1.75rem;
+
+        @media screen and (min-width: 1600px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__progress {
+        width: 100%;
+        height: 60px;
+        border: 6px solid $color-folk-theme;
+        border-radius: 50px;
+        overflow: hidden;
+        position: relative;
+
+        &__bar {
+            height: calc(100% + 12px);
+            top: -6px;
+            left: 0;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: absolute;
+            background-color: $color-folk-theme;
+        }
+    }
+
+    &__text-achieved {
+        font-size: 1.75rem;
+
+        @media screen and (min-width: 1600px) {
+            font-size: 2.5rem;
+        }
+
+        &--number {
+            font-size: 2.5rem;
+
+            @media screen and (min-width: 1600px) {
+                font-size: 3.75rem;
+            }
+        }
+    }
+}
