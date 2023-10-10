@@ -54,3 +54,10 @@ Text Domain: wp-bootstrap-starter-child
 .l-navbar .nav-link {
 	font-size: .875rem !important;
 }
+
+.l-here__card-title {
+	height: 72px; /* tamanho_da_fonte * quantidade_de_linhas */
+	line-height: 24px; /* mesmo tamanho da fonte */
+	overflow-y: hidden;
+	font-size: 1.5rem; /* 24px */
+}

@@ -11,13 +11,15 @@
                     <span class="u-font-weight-black">impacto</span>
                 </h3>
             </div>
-
-            <!-- <div class="col-lg-4 d-flex align-items-end">
+            <?php if(get_field('ativado', 'option') == 1):?>
+            <div class="col-lg-4 d-flex align-items-end">
 
                 <p class="l-impact__date u-font-weight-semibold text-uppercase u-color-folk-theme">
-                    (<php echo get_field('mes_impacto', 'option')?>/<php echo get_field('ano_impacto', 'option')?>)
+                    <?php setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                         echo strftime('%B / %Y', strtotime('today'));?>
                 </p>
-            </div> -->
+            </div>
+            <?php endif;?>
         </div>
 
         <div class="row">
@@ -106,7 +108,8 @@
                 ?>
             </div>
         </div>
-
+        
+<?php if (!empty(get_field('botoes_1', 'option') && get_field('botoes_2', 'option') && get_field('botoes_3', 'option'))) :?>
         <div class="row">
 
             <div class="col-12 mb-5">
@@ -118,10 +121,10 @@
 
                         <a 
                         class="hover:u-opacity-8 d-block" 
-                        href="<?php echo get_field('link_1') ?>">
+                        href="<?php echo get_field('link_1', 'option') ?>">
                             <img
                             class="img-fluid"
-                            src="<?php echo get_field('botoes_1') ?>"
+                            src="<?php echo get_field('botoes_1', 'option') ?>"
                             alt="">
                         </a>
                     </div>
@@ -131,10 +134,10 @@
 
                         <a 
                         class="hover:u-opacity-8 d-block" 
-                        href="<?php echo get_field('link_2') ?>">
+                        href="<?php echo get_field('link_2', 'option') ?>">
                             <img
                             class="img-fluid"
-                            src="<?php echo get_field('botoes_2') ?>"
+                            src="<?php echo get_field('botoes_2', 'option') ?>"
                             alt="">
                         </a>
                     </div>
@@ -143,19 +146,19 @@
 
                         <a 
                         class="hover:u-opacity-8 d-block" 
-                        href="<?php echo get_field('link_3') ?>">
+                        href="<?php echo get_field('link_3', 'option') ?>">
                             <img
                             class="img-fluid"
-                            src="<?php echo get_field('botoes_3') ?>"
+                            src="<?php echo get_field('botoes_3', 'option') ?>"
                             alt="">
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- <div class="row">
-
+<?php endif; ?>
+<?php if(get_field('ativado', 'option') == 1):?>
+        <div class="row">
             <div class="col-12 js-progress-box">
 
                 <h4 class="l-impact__text-help u-font-weight-bold text-uppercase all:u-color-folk-theme">
@@ -163,15 +166,26 @@
                     <span class="u-font-weight-black">bater nossa meta!</span>
                 </h4>
 
+                <?php
+    // Coloque seu código PHP aqui
+    $porcentagem_atual = get_field('meta', 'option');
+    $dias_no_mes = date("t");
+    $porcentagem_diaria = 100 / $dias_no_mes;
+    $dia_atual = date("j");
+    $porcentagem_dia_atual = $dia_atual * $porcentagem_diaria;
+    $porcentagem_atual += $porcentagem_dia_atual;
+    $porcentagem_atual = min($porcentagem_atual, 100);
+    ?>
+
                 <div class="l-impact__progress">
                     <span 
                     class="l-impact__progress__bar js-progress-bar" 
-                    data-value="<php echo get_field ('meta','option') ?>"></span>
+                    data-value="<?php echo number_format($porcentagem_atual)?>"></span>
                 </div>
-
-                <p class="l-impact__text-achieved u-font-weight-black text-center text-md-right text-uppercase all:u-color-folk-primary">
-                    <span class="l-impact__text-achieved--number js-progress-number"><php echo get_field ('meta','option') ?> . %</span> alcançados
-                </p>
+             
+    <p class="l-impact__text-achieved u-font-weight-black text-center text-md-right text-uppercase all:u-color-folk-primary">
+        <span class="l-impact__text-achieved--number js-progress-number"><?php echo number_format($porcentagem_atual) ?>%</span> alcançados
+    </p>
 
                 <div class="row justify-content-end">
 
@@ -179,12 +193,13 @@
 
                         <a 
                         class="l-news__small__card-read-more u-line-height-100 hover:u-opacity-8 d-block u-font-weight-bold text-center text-decoration-none u-color-folk-white u-bg-folk-primary py-2 px-5" 
-                        href="<php echo get_field('quero_contribuir_btn', 'option')?>">
+                        href="<?php echo get_field('quero_contribuir_btn', 'option')?>">
                             Quero contribuir
                         </a>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
+<?php endif; ?>
 </section>
